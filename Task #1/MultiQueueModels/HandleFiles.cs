@@ -30,8 +30,8 @@ namespace MultiQueueModels
             this.serverTime = new List<List<tableCase>>();
 
             string workingDirectory = Environment.CurrentDirectory;
-            string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
-            string testDirectory = projectDirectory.Replace('\\', '/') + "/MultiQueueSimulation/TestCases/";
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName.Replace('\\', '/');
+            string testDirectory = projectDirectory + "/MultiQueueSimulation/TestCases/";
             string file = testDirectory + testCase;
 
             var configMap = new Dictionary<string, Action<string>>

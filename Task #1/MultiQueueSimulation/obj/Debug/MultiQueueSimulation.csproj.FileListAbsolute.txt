@@ -110,3 +110,16 @@ D:\Projects\modeling\Template_Students\Task #1\MultiQueueSimulation\obj\Debug\Mu
 D:\Projects\modeling\Template_Students\Task #1\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.CopyComplete
 D:\Projects\modeling\Template_Students\Task #1\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.exe
 D:\Projects\modeling\Template_Students\Task #1\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.pdb
+D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.exe.config
+D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.exe
+D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\bin\Debug\MultiQueueSimulation.pdb
+D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\bin\Debug\MultiQueueModels.dll
+D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\bin\Debug\MultiQueueModels.pdb
+D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.AssemblyReference.cache
+D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.Form1.resources
+D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.Properties.Resources.resources
+D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.GenerateResource.cache
+D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.CoreCompileInputs.cache
+D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.CopyComplete
+D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.exe
+D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.pdb
