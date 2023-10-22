@@ -33,9 +33,6 @@ namespace MultiQueueSimulation
 
             PrintSimulationTable(system.SimulationTable);
 
-
-            //Console.WriteLine("SimulationTable has been saved to the Excel file.");
-
             string result = TestingManager.Test(system, Constants.FileNames.TestCase4);
             MessageBox.Show(result);
             Application.EnableVisualStyles();
