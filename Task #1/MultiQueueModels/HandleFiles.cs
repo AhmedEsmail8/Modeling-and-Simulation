@@ -7,14 +7,6 @@ using System.Threading.Tasks;
 
 namespace MultiQueueModels
 {
-    public struct tableCase
-    {
-        public double time, prob, comProb, lowerRange, upperRange;
-        public override string ToString()
-        {
-            return $"time: {time}, prob: {prob}, comProb: {comProb}, lowerRange: {lowerRange}, upperRange: {upperRange}";
-        }
-    }
     public class HandleFiles
     {
 
@@ -22,12 +14,12 @@ namespace MultiQueueModels
         public int StoppingNumber { get; set; }
         public int SelectionMethod { get; set; }
         public int StoppingCriteria { get; set; }
-        public List<tableCase> interArrivalDistribution { get; set; }
-        public List<List<tableCase>> serverTime { get; set; }
+        public List<TimeDistribution> interArrivalDistribution { get; set; }
+        public List<Server> servers { get; set; }
         public HandleFiles(string testCase)
         {
-            this.interArrivalDistribution = new List<tableCase>();
-            this.serverTime = new List<List<tableCase>>();
+            this.interArrivalDistribution = new List<TimeDistribution>();
+            this.servers = new List<Server>();
 
             string workingDirectory = Environment.CurrentDirectory;
             string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName.Replace('\\', '/');
@@ -45,7 +37,7 @@ namespace MultiQueueModels
             if (File.Exists(file))
             {
                 string[] lines = File.ReadAllLines(file);
-
+                int serverID = 0;
                 for (int i=0; i<lines.Length; i++)
                 {
                     if (configMap.TryGetValue(lines[i], out Action<string> setProperty))
@@ -55,48 +47,52 @@ namespace MultiQueueModels
                     }
                     if (lines[i] == "InterarrivalDistribution")
                     {
-                        double sum = 0;
+                        decimal sum = 0;
+                        
                         while (i + 1 < lines.Length && lines[++i].Length != 0)
                         {
                             string []line = lines[i].Split(',');
-                            tableCase tmp = new tableCase();
-
-                            tmp.time = double.Parse(line[0]);
-                            tmp.prob = double.Parse(line[1]);
-                            sum += tmp.prob;
-                            tmp.comProb = sum;
-                            tmp.upperRange = tmp.comProb * 100;
+                            TimeDistribution time = new TimeDistribution();
+                            time.Time = int.Parse(line[0]);
+                            time.Probability = decimal.Parse(line[1]);
+                            sum += time.Probability;
+                            time.CummProbability = sum;
+                            time.MaxRange = (int)(time.CummProbability * 100);
                             if (this.interArrivalDistribution.Count == 0)
-                                tmp.lowerRange = 0;
+                                time.MinRange = 1;
                             else
-                                tmp.lowerRange = this.interArrivalDistribution[this.interArrivalDistribution.Count - 1].upperRange + 1;
-
-                            this.interArrivalDistribution.Add(tmp);
+                                time.MinRange = this.interArrivalDistribution[this.interArrivalDistribution.Count - 1].MaxRange + 1;
+                            
+                            this.interArrivalDistribution.Add(time);
                         }
                     }
 
                     else if (lines[i].IndexOf("ServiceDistribution") != -1)
                     {
-                        List<tableCase> table = new List<tableCase>();
-                        double sum = 0;
+                        Server ser = new Server();
+                        ser.FinishTime = 0;
+                        ser.TotalWorkingTime = 0;
+                        ser.ID = serverID;
+                        serverID++;
+                        decimal sum = 0;
                         while (i+1<lines.Length && lines[++i].Length != 0)
                         {
+
                             string[] line = lines[i].Split(',');
-                            tableCase tmp = new tableCase();
-
-                            tmp.time = double.Parse(line[0]);
-                            tmp.prob = double.Parse(line[1]);
-                            sum += tmp.prob;
-                            tmp.comProb = sum;
-                            tmp.upperRange = tmp.comProb * 100;
-                            if (table.Count == 0)
-                                tmp.lowerRange = 0;
+                            TimeDistribution time = new TimeDistribution();
+                            time.Time = int.Parse(line[0]);
+                            time.Probability = decimal.Parse(line[1]);
+                            sum += time.Probability;
+                            time.CummProbability = sum;
+                            time.MaxRange = (int)(time.CummProbability * 100);
+                            if (ser.TimeDistribution.Count == 0)
+                                time.MinRange = 1;
                             else
-                                tmp.lowerRange = table[table.Count - 1].upperRange + 1;
+                                time.MinRange = ser.TimeDistribution[ser.TimeDistribution.Count - 1].MaxRange + 1;
 
-                            table.Add(tmp);
+                            ser.TimeDistribution.Add(time);
                         }
-                        this.serverTime.Add(table);
+                        this.servers.Add(ser);
                     }
                 }
             }
@@ -109,18 +105,18 @@ namespace MultiQueueModels
             Console.WriteLine("StoppingCriteria = " + this.StoppingCriteria);
             Console.WriteLine("StoppingNumber = " + this.StoppingNumber);
             Console.WriteLine("\n\nInterarrivalDistribution");
-            foreach (tableCase i in this.interArrivalDistribution)
+            foreach (TimeDistribution i in this.interArrivalDistribution)
             {
-                Console.WriteLine(i.ToString());
+                Console.WriteLine($"time: {i.Time}, prob: {i.Probability}, comProb: {i.CummProbability}, lowerRange: {i.MinRange}, upperRange: {i.MaxRange}");
             }
             Console.WriteLine("\n\n");
-            int tmp = 0;
-            foreach (List<tableCase> i in this.serverTime)
+            foreach (Server ser in this.servers)
             {
-                Console.WriteLine("Server #" + tmp);
-                tmp++;
-                foreach (tableCase j in i)
-                    Console.WriteLine(j.ToString());
+                Console.WriteLine("Server #" + ser.ID);
+                foreach (TimeDistribution i in ser.TimeDistribution)
+                {
+                    Console.WriteLine($"time: {i.Time}, prob: {i.Probability}, comProb: {i.CummProbability}, lowerRange: {i.MinRange}, upperRange: {i.MaxRange}");
+                }
                 Console.WriteLine("\n\n");
             }
         }

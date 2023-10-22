@@ -123,3 +123,7 @@ D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\obj\Debug\Multi
 D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.csproj.CopyComplete
 D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.exe
 D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.pdb
+D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\bin\Debug\EPPlus.dll
+D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\bin\Debug\EPPlus.Interfaces.dll
+D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\bin\Debug\EPPlus.System.Drawing.dll
+D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\bin\Debug\EPPlus.xml
