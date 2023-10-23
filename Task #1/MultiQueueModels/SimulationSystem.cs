@@ -20,6 +20,7 @@ namespace MultiQueueModels
         public SimulationSystem()
         {
             this.Servers = new List<Server>();
+
             this.InterarrivalDistribution = new List<TimeDistribution>();
             this.PerformanceMeasures = new PerformanceMeasures();
             this.SimulationTable = new List<SimulationCase>();
@@ -33,6 +34,7 @@ namespace MultiQueueModels
                 (StoppingCriteria == Enums.StoppingCriteria.SimulationEndTime && total_time <= StoppingNumber))
             {
                 List<Server> availableServers = new List<Server>();
+
                 List<int> index = new List<int>();
                 SimulationCase simCase = new SimulationCase();
 
@@ -59,7 +61,7 @@ namespace MultiQueueModels
                     simCase.ArrivalTime = SimulationTable.Last().ArrivalTime + simCase.InterArrival;
                 }
 
-
+          
                 foreach (Server ser in Servers)
                 {
                     if (ser.FinishTime <= simCase.ArrivalTime)
@@ -80,7 +82,6 @@ namespace MultiQueueModels
                     }
                 }
 
-
                 if (SelectionMethod == Enums.SelectionMethod.Random)
                 {
                     int idx = rnd.Next(availableServers.Count);
@@ -89,9 +90,35 @@ namespace MultiQueueModels
                 else if (SelectionMethod == Enums.SelectionMethod.HighestPriority)
                 {
 
+                    Server highestPriorityServer = null;
+                    int highestPriority = int.MaxValue;
+
+                    foreach (Server server in availableServers)
+                    {
+                        if (server.ID < highestPriority)
+                        {
+                            highestPriority = server.ID;
+                            highestPriorityServer = server;
+                        }
+                    }
+
+                    simCase.AssignedServer = highestPriorityServer;
                 }
-                else
+                else if (SelectionMethod == Enums.SelectionMethod.LeastUtilization)
                 {
+                    Server leastUtilizationServer = null;
+                    decimal leastUtilization = decimal.MaxValue;
+
+                    foreach (Server server in availableServers)
+                    {
+                        if (server.Utilization < leastUtilization)
+                        {
+                            leastUtilization = server.Utilization;
+                            leastUtilizationServer = server;
+                        }
+                    }
+
+                    simCase.AssignedServer = leastUtilizationServer;
 
                 }
 
@@ -112,14 +139,15 @@ namespace MultiQueueModels
 
                 simCase.StartTime = Math.Max(simCase.AssignedServer.FinishTime, simCase.ArrivalTime);
                 simCase.EndTime = simCase.StartTime + simCase.ServiceTime;
-                
+
                 for (int i=0; i<Servers.Count; i++)
                 {
                     if (Servers[i].ID == simCase.AssignedServer.ID)
                     {
                         Servers[i].FinishTime = simCase.EndTime;
                         Servers[i].TotalWorkingTime += simCase.EndTime - simCase.StartTime;
-                        //Servers[i].Utilization
+                        Servers[i].Utilization += simCase.EndTime - simCase.StartTime;
+
                         break;
                     }
                 }
@@ -139,6 +167,7 @@ namespace MultiQueueModels
         ///////////// INPUTS ///////////// 
         public int NumberOfServers { get; set; }
         public int StoppingNumber { get; set; }
+        public int TotalSimulationTime; //d
         public List<Server> Servers { get; set; }
         public List<TimeDistribution> InterarrivalDistribution { get; set; }
         public Enums.StoppingCriteria StoppingCriteria { get; set; }

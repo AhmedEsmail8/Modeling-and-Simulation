@@ -10,7 +10,7 @@ namespace MultiQueueModels
     public class HandleFiles
     {
 
-        public int NumberOfServers { get; set; }
+        public int NumberOfServers { get; set; } = 1;
         public int StoppingNumber { get; set; }
         public int SelectionMethod { get; set; }
         public int StoppingCriteria { get; set; }
@@ -37,7 +37,7 @@ namespace MultiQueueModels
             if (File.Exists(file))
             {
                 string[] lines = File.ReadAllLines(file);
-                int serverID = 0;
+                int serverID = 1;
                 for (int i=0; i<lines.Length; i++)
                 {
                     if (configMap.TryGetValue(lines[i], out Action<string> setProperty))
