@@ -65,9 +65,10 @@ namespace MultiQueueSimulation
 
         void getPerformanceSystem()
         {
-            avg_wating_time.Text = Program.system.PerformanceMeasures.AverageWaitingTime.ToString();
-            max_queue_length.Text = Program.system.PerformanceMeasures.MaxQueueLength.ToString();
-            customer_probability.Text = Program.system.PerformanceMeasures.WaitingProbability.ToString();
+            PerformanceMeasures measures = Program.system.PerformanceMeasures;
+            avg_wating_time.Text = measures.AverageWaitingTime.ToString();
+            max_queue_length.Text = measures.MaxQueueLength.ToString();
+            customer_probability.Text = measures.WaitingProbability.ToString();
         }
 
         void getSimulationTable()
@@ -89,6 +90,13 @@ namespace MultiQueueSimulation
                     simulationCase.TimeInQueue
                 );
             }
+        }
+
+        private void show_graphs_Click(object sender, EventArgs e)
+        {
+            graphs graphsForm = new graphs();
+            Hide();
+            graphsForm.Show();
         }
     }
 }

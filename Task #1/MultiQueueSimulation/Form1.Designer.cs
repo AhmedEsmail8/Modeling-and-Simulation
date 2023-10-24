@@ -28,20 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.show_graphs = new System.Windows.Forms.Button();
             this.FileName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.avg_wating_time = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.max_queue_length = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.customer_probability = new System.Windows.Forms.Label();
             this.customer_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.randomInterArrivalTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.interArrivalTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +45,13 @@
             this.timeServiceBegins = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timeServiceEnds = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalDelay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.avg_wating_time = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.max_queue_length = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.customer_probability = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -89,6 +89,7 @@
             this.show_graphs.TabIndex = 3;
             this.show_graphs.Text = "show graphs";
             this.show_graphs.UseVisualStyleBackColor = true;
+            this.show_graphs.Click += new System.EventHandler(this.show_graphs_Click);
             // 
             // FileName
             // 
@@ -120,14 +121,14 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 50;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.customer_number,
@@ -148,80 +149,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1030, 323);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(352, 416);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(277, 28);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Performance for the system :";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(353, 466);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(305, 23);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Average waiting time (in the queue) = ";
-            // 
-            // avg_wating_time
-            // 
-            this.avg_wating_time.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.avg_wating_time.AutoSize = true;
-            this.avg_wating_time.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.avg_wating_time.Location = new System.Drawing.Point(664, 466);
-            this.avg_wating_time.Name = "avg_wating_time";
-            this.avg_wating_time.Size = new System.Drawing.Size(0, 23);
-            this.avg_wating_time.TabIndex = 6;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(353, 512);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(215, 23);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Maximum queue length = ";
-            // 
-            // max_queue_length
-            // 
-            this.max_queue_length.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.max_queue_length.AutoSize = true;
-            this.max_queue_length.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.max_queue_length.Location = new System.Drawing.Point(574, 512);
-            this.max_queue_length.Name = "max_queue_length";
-            this.max_queue_length.Size = new System.Drawing.Size(0, 23);
-            this.max_queue_length.TabIndex = 8;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(353, 557);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(377, 23);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Probability that a customer wait in the queue = ";
-            // 
-            // customer_probability
-            // 
-            this.customer_probability.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.customer_probability.AutoSize = true;
-            this.customer_probability.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customer_probability.Location = new System.Drawing.Point(736, 557);
-            this.customer_probability.Name = "customer_probability";
-            this.customer_probability.Size = new System.Drawing.Size(0, 23);
-            this.customer_probability.TabIndex = 10;
             // 
             // customer_number
             // 
@@ -302,6 +229,80 @@
             this.totalDelay.MinimumWidth = 6;
             this.totalDelay.Name = "totalDelay";
             this.totalDelay.ReadOnly = true;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(352, 416);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(277, 28);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Performance for the system :";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(353, 466);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(305, 23);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Average waiting time (in the queue) = ";
+            // 
+            // avg_wating_time
+            // 
+            this.avg_wating_time.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.avg_wating_time.AutoSize = true;
+            this.avg_wating_time.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.avg_wating_time.Location = new System.Drawing.Point(664, 466);
+            this.avg_wating_time.Name = "avg_wating_time";
+            this.avg_wating_time.Size = new System.Drawing.Size(0, 23);
+            this.avg_wating_time.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(353, 512);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(215, 23);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Maximum queue length = ";
+            // 
+            // max_queue_length
+            // 
+            this.max_queue_length.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.max_queue_length.AutoSize = true;
+            this.max_queue_length.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.max_queue_length.Location = new System.Drawing.Point(574, 512);
+            this.max_queue_length.Name = "max_queue_length";
+            this.max_queue_length.Size = new System.Drawing.Size(0, 23);
+            this.max_queue_length.TabIndex = 8;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(353, 557);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(377, 23);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Probability that a customer wait in the queue = ";
+            // 
+            // customer_probability
+            // 
+            this.customer_probability.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.customer_probability.AutoSize = true;
+            this.customer_probability.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customer_probability.Location = new System.Drawing.Point(736, 557);
+            this.customer_probability.Name = "customer_probability";
+            this.customer_probability.Size = new System.Drawing.Size(0, 23);
+            this.customer_probability.TabIndex = 10;
             // 
             // Form1
             // 

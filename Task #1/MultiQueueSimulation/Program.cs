@@ -53,7 +53,7 @@ namespace MultiQueueSimulation
             PrintSimulationTable(system.SimulationTable);
 
             string result = TestingManager.Test(system, tmp);
-            MessageBox.Show(result);
+            //MessageBox.Show(result);
 
         }
         [STAThread]
@@ -64,7 +64,7 @@ namespace MultiQueueSimulation
            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new graphs());
 
 
         }
