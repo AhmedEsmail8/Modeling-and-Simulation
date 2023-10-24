@@ -30,6 +30,11 @@ namespace MultiQueueSimulation
             system.Servers = new List<Server>(file.servers);
 
             system.start();
+            PerformanceMeasures obj1 = new PerformanceMeasures();
+
+            obj1.Calculateperformance(system.SimulationTable);
+
+            system.PerformanceMeasures = obj1;
 
             PrintSimulationTable(system.SimulationTable);
 
@@ -38,6 +43,7 @@ namespace MultiQueueSimulation
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+
 
         }
         static void PrintSimulationTable(List<SimulationCase> simulationTable)

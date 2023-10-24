@@ -147,7 +147,6 @@ namespace MultiQueueModels
                         Servers[i].FinishTime = simCase.EndTime;
                         Servers[i].TotalWorkingTime += simCase.EndTime - simCase.StartTime;
                         Servers[i].Utilization += simCase.EndTime - simCase.StartTime;
-
                         break;
                     }
                 }
@@ -161,13 +160,13 @@ namespace MultiQueueModels
             {
                 Servers[i].FinishTime = 0;
                 Servers[i].TotalWorkingTime = 0;
+                Servers[i].calcutilization(this.SimulationTable);
             }
         }
 
         ///////////// INPUTS ///////////// 
         public int NumberOfServers { get; set; }
         public int StoppingNumber { get; set; }
-        public int TotalSimulationTime; //d
         public List<Server> Servers { get; set; }
         public List<TimeDistribution> InterarrivalDistribution { get; set; }
         public Enums.StoppingCriteria StoppingCriteria { get; set; }

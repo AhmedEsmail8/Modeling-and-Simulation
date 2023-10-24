@@ -2,7 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\MultiQueueModels",
-    "\\MultiQueueSimulation"
+    "\\MultiQueueSimulation",
+    "\\MultiQueueSimulation\\TestCases"
   ],
   "SelectedNode": "\\MultiQueueSimulation.sln",
   "PreviewInSolutionExplorer": false
