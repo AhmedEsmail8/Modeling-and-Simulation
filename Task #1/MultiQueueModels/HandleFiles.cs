@@ -40,6 +40,7 @@ namespace MultiQueueModels
                 int serverID = 1;
                 for (int i=0; i<lines.Length; i++)
                 {
+                    Console.WriteLine("7amasa");
                     if (configMap.TryGetValue(lines[i], out Action<string> setProperty))
                     {
                         setProperty(lines[i + 1]);
@@ -93,6 +94,7 @@ namespace MultiQueueModels
                             ser.TimeDistribution.Add(time);
                         }
                         this.servers.Add(ser);
+                        
                     }
                 }
             }

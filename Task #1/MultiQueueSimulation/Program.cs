@@ -15,13 +15,14 @@ namespace MultiQueueSimulation
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        [STAThread]
-        static void Main()
+        public static HandleFiles file { get; set; }
+        public static SimulationSystem system { get; set; }
+        public static void init(string path)
         {
-            HandleFiles file = new HandleFiles(Constants.FileNames.TestCase4);
+            file = new HandleFiles(path);
             file.display();
 
-            SimulationSystem system = new SimulationSystem();
+            system = new SimulationSystem();
             system.NumberOfServers = file.NumberOfServers;
             system.StoppingCriteria = (Enums.StoppingCriteria)file.StoppingCriteria;
             system.SelectionMethod = (Enums.SelectionMethod)file.SelectionMethod;
@@ -38,8 +39,15 @@ namespace MultiQueueSimulation
 
             PrintSimulationTable(system.SimulationTable);
 
-            string result = TestingManager.Test(system, Constants.FileNames.TestCase4);
+            string result = TestingManager.Test(system, path);
             MessageBox.Show(result);
+
+        }
+        [STAThread]
+        static void Main()
+        {
+            init(Constants.FileNames.TestCase4);
+           
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
