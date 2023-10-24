@@ -17,9 +17,22 @@ namespace MultiQueueSimulation
         /// </summary>
         public static HandleFiles file { get; set; }
         public static SimulationSystem system { get; set; }
-        public static void init(string path)
+        public static void init(string path, bool flag = true)
         {
-            file = new HandleFiles(path);
+            string tmp = path;
+            if (!flag)
+            {
+                string workingDirectory = Environment.CurrentDirectory;
+                string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName.Replace('\\', '/');
+                string testDirectory = projectDirectory + "/MultiQueueSimulation/TestCases/";
+                
+                if (File.Exists(Path.Combine(testDirectory, "UserTest.txt")))
+                    File.Delete(Path.Combine(testDirectory, "UserTest.txt"));
+
+                File.Copy(path, Path.Combine(testDirectory, "UserTest.txt"));
+                tmp = "UserTest.txt";
+            }
+            file = new HandleFiles(tmp);
             file.display();
 
             system = new SimulationSystem();
@@ -39,13 +52,14 @@ namespace MultiQueueSimulation
 
             PrintSimulationTable(system.SimulationTable);
 
-            string result = TestingManager.Test(system, path);
+            string result = TestingManager.Test(system, tmp);
             MessageBox.Show(result);
 
         }
         [STAThread]
         static void Main()
         {
+            
             init(Constants.FileNames.TestCase4);
            
             Application.EnableVisualStyles();

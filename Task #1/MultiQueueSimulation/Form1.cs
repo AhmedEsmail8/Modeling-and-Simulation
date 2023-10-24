@@ -29,15 +29,20 @@ namespace MultiQueueSimulation
 
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    fileLocation = dialog.FileName;
-                    MessageBox.Show(fileLocation);
-                    Program.init(fileLocation.Replace('\\', '/'));
+                    fileLocation = dialog.FileName.Replace('\\', '/');
+                    MessageBox.Show("File uploaded");
+                    Program.init(fileLocation, false);
                 }
             }
             catch (Exception error)
             {
-                MessageBox.Show("An error occured while uploading your image" + error.Message);
+                MessageBox.Show("An error occured while uploading your image. " + error.Message);
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

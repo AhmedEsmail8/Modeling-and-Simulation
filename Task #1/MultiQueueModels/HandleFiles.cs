@@ -24,7 +24,7 @@ namespace MultiQueueModels
             string workingDirectory = Environment.CurrentDirectory;
             string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName.Replace('\\', '/');
             string testDirectory = projectDirectory + "/MultiQueueSimulation/TestCases/";
-            string file = testDirectory + testCase;
+            string file = Path.Combine(testDirectory, testCase);
 
             var configMap = new Dictionary<string, Action<string>>
             {
@@ -40,7 +40,6 @@ namespace MultiQueueModels
                 int serverID = 1;
                 for (int i=0; i<lines.Length; i++)
                 {
-                    Console.WriteLine("7amasa");
                     if (configMap.TryGetValue(lines[i], out Action<string> setProperty))
                     {
                         setProperty(lines[i + 1]);
