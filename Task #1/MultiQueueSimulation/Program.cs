@@ -33,7 +33,7 @@ namespace MultiQueueSimulation
                 tmp = "UserTest.txt";
             }
             file = new HandleFiles(tmp);
-            file.display();
+            //file.display();
 
             system = new SimulationSystem();
             system.NumberOfServers = file.NumberOfServers;
@@ -60,7 +60,7 @@ namespace MultiQueueSimulation
         static void Main()
         {
             
-            init(Constants.FileNames.TestCase4);
+            init(Constants.FileNames.TestCase1);
            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

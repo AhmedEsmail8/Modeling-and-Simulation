@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MultiQueueModels;
 
 namespace MultiQueueModels
 {
@@ -11,48 +12,39 @@ namespace MultiQueueModels
         public Server()
         {
             this.TimeDistribution = new List<TimeDistribution>();
+            no_customers = 0;
+            TotalWorkingTime = 0;
         }
 
         public int ID { get; set; }
         public decimal IdleProbability { get; set; }
-        public decimal AverageServiceTime { get; set; } 
+        public decimal AverageServiceTime { get; set; }
         public decimal Utilization { get; set; }
 
         public List<TimeDistribution> TimeDistribution;
-        
+
         //optional if needed use them
         public int FinishTime { get; set; }
         public int TotalWorkingTime { get; set; }
+        public int no_customers { get; set; }
 
-        public void calcutilization(List<SimulationCase> simulationTable)
+        public void Calculate_server_performance(decimal totalSimulationTime)
         {
-            decimal totalServiceTime = 0;
-            int no_customer = 0;
-            decimal serverIdleTime = 0;
-
-            for (int i = 0; i < simulationTable.Count; i++)
-            {
-                if (simulationTable[i].AssignedServer.ID == this.ID)
-                {
-                    totalServiceTime += simulationTable[i].ServiceTime;
-                    no_customer++;
-                }
-                else
-                {
-                    serverIdleTime += simulationTable[i].ServiceTime; 
-                }
-            }
-
-            decimal totalSimulationTime = simulationTable[simulationTable.Count - 1].EndTime;
-            decimal totalIdleTime = totalSimulationTime - (this.TotalWorkingTime + totalServiceTime); 
-
-            this.IdleProbability = totalIdleTime / totalSimulationTime;
-
-            this.AverageServiceTime = no_customer > 0 ? totalServiceTime / no_customer : 0;
-            this.Utilization = totalServiceTime / totalSimulationTime;
+            this.AverageServiceTime = no_customers > 0 ? (decimal)this.TotalWorkingTime / no_customers : 0;
+            this.Utilization = (decimal)this.TotalWorkingTime / totalSimulationTime;
+            this.IdleProbability = 1 - this.Utilization;
+            if (this.IdleProbability < 0) 
+                this.IdleProbability *= -1;
         }
 
-
+        public override string ToString()
+        {
+            return $"Server ID: {ID}\n" +
+                   $"Idle Probability: {IdleProbability}\n" +
+                   $"Average Service Time: {AverageServiceTime}\n" +
+                   $"Utilization: {Utilization}\n"+
+                   $"totalWorkingTime: {TotalWorkingTime}\n\n";
+        }
 
     }
 }

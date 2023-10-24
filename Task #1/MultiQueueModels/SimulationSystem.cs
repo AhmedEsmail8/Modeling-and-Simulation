@@ -29,124 +29,30 @@ namespace MultiQueueModels
         public void start()
         {
             int customers = 1, total_time = 0;
-            Random rnd = new Random();
             while ((StoppingCriteria == Enums.StoppingCriteria.NumberOfCustomers && customers<=StoppingNumber) ||
                 (StoppingCriteria == Enums.StoppingCriteria.SimulationEndTime && total_time <= StoppingNumber))
             {
-                List<Server> availableServers = new List<Server>();
-
                 List<int> index = new List<int>();
                 SimulationCase simCase = new SimulationCase();
 
                 simCase.CustomerNumber = customers;
                 customers++;
 
-                if (simCase.CustomerNumber == 1)
-                {
-                    simCase.RandomInterArrival = 1;
-                    simCase.InterArrival = 0;
-                    simCase.ArrivalTime = 0;
-                }
-                else
-                {
-                    simCase.RandomInterArrival = rnd.Next(1, 101);
-                    foreach (TimeDistribution i in InterarrivalDistribution)
-                    {
-                        if (simCase.RandomInterArrival >= i.MinRange && simCase.RandomInterArrival <= i.MaxRange)
-                        {
-                            simCase.InterArrival = i.Time;
-                            break;
-                        }
-                    }
-                    simCase.ArrivalTime = SimulationTable.Last().ArrivalTime + simCase.InterArrival;
-                }
 
-          
-                foreach (Server ser in Servers)
-                {
-                    if (ser.FinishTime <= simCase.ArrivalTime)
-                        availableServers.Add(ser);
-                }
-                if (availableServers.Count == 0)
-                {
-                    List<Server> tmp = new List<Server>(Servers);
-                    com cmp = new com();
-                    tmp.Sort(cmp);
-                    for (int i=0; i<Servers.Count; i++)
-                    {
-                        if (Servers[i].FinishTime == tmp.First().FinishTime)
-                        {
-                            availableServers.Add(Servers[i]);
-                            index.Add(i);
-                        }
-                    }
-                }
 
-                if (SelectionMethod == Enums.SelectionMethod.Random)
-                {
-                    int idx = rnd.Next(availableServers.Count);
-                    simCase.AssignedServer = availableServers[idx];
-                }
-                else if (SelectionMethod == Enums.SelectionMethod.HighestPriority)
-                {
-
-                    Server highestPriorityServer = null;
-                    int highestPriority = int.MaxValue;
-
-                    foreach (Server server in availableServers)
-                    {
-                        if (server.ID < highestPriority)
-                        {
-                            highestPriority = server.ID;
-                            highestPriorityServer = server;
-                        }
-                    }
-
-                    simCase.AssignedServer = highestPriorityServer;
-                }
-                else if (SelectionMethod == Enums.SelectionMethod.LeastUtilization)
-                {
-                    Server leastUtilizationServer = null;
-                    decimal leastUtilization = decimal.MaxValue;
-
-                    foreach (Server server in availableServers)
-                    {
-                        if (server.Utilization < leastUtilization)
-                        {
-                            leastUtilization = server.Utilization;
-                            leastUtilizationServer = server;
-                        }
-                    }
-
-                    simCase.AssignedServer = leastUtilizationServer;
-
-                }
-
-                if (simCase.AssignedServer.FinishTime > simCase.ArrivalTime)
-                {
-                    simCase.TimeInQueue = simCase.AssignedServer.FinishTime - simCase.ArrivalTime;
-                }
-
-                simCase.RandomService = rnd.Next(1, 101);
-                foreach (TimeDistribution time in simCase.AssignedServer.TimeDistribution)
-                {
-                    if (simCase.RandomService>=time.MinRange && simCase.RandomService <= time.MaxRange)
-                    {
-                        simCase.ServiceTime = time.Time;
-                        break;
-                    }
-                }
-
-                simCase.StartTime = Math.Max(simCase.AssignedServer.FinishTime, simCase.ArrivalTime);
-                simCase.EndTime = simCase.StartTime + simCase.ServiceTime;
+                handle_interArrival(simCase);
+                assignServer(simCase);
+                handle_service_time(simCase);
+                
 
                 for (int i=0; i<Servers.Count; i++)
                 {
                     if (Servers[i].ID == simCase.AssignedServer.ID)
                     {
                         Servers[i].FinishTime = simCase.EndTime;
-                        Servers[i].TotalWorkingTime += simCase.EndTime - simCase.StartTime;
-                        Servers[i].Utilization += simCase.EndTime - simCase.StartTime;
+                        Servers[i].TotalWorkingTime += simCase.ServiceTime;
+                        Servers[i].no_customers++;
+                        Servers[i].Utilization = Servers[i].TotalWorkingTime / simCase.EndTime;
                         break;
                     }
                 }
@@ -158,10 +64,119 @@ namespace MultiQueueModels
             }
             for (int i=0; i<NumberOfServers; i++)
             {
+                Console.WriteLine(Servers[i].ToString());
                 Servers[i].FinishTime = 0;
-                Servers[i].TotalWorkingTime = 0;
-                Servers[i].calcutilization(this.SimulationTable);
+                Servers[i].Calculate_server_performance(this.SimulationTable.Last().EndTime);
             }
+        }
+
+        public void handle_interArrival(SimulationCase simCase)
+        {
+            Random rnd = new Random();
+            if (simCase.CustomerNumber == 1)
+            {
+                simCase.RandomInterArrival = 1;
+                simCase.InterArrival = 0;
+                simCase.ArrivalTime = 0;
+            }
+            else
+            {
+                simCase.RandomInterArrival = rnd.Next(1, 101);
+                foreach (TimeDistribution i in InterarrivalDistribution)
+                {
+                    if (simCase.RandomInterArrival >= i.MinRange && simCase.RandomInterArrival <= i.MaxRange)
+                    {
+                        simCase.InterArrival = i.Time;
+                        break;
+                    }
+                }
+                simCase.ArrivalTime = SimulationTable.Last().ArrivalTime + simCase.InterArrival;
+            }
+        }
+
+        public void assignServer(SimulationCase simCase)
+        {
+            List<Server> availableServers = new List<Server>();
+            Random rnd = new Random();
+
+            foreach (Server ser in Servers)
+            {
+                if (ser.FinishTime <= simCase.ArrivalTime)
+                    availableServers.Add(ser);
+            }
+            if (availableServers.Count == 0)
+            {
+                List<Server> tmp = new List<Server>(Servers);
+                com cmp = new com();
+                tmp.Sort(cmp);
+                for (int i = 0; i < Servers.Count; i++)
+                {
+                    if (Servers[i].FinishTime == tmp.First().FinishTime)
+                        availableServers.Add(Servers[i]);
+                }
+            }
+
+            if (SelectionMethod == Enums.SelectionMethod.Random)
+            {
+                int idx = rnd.Next(availableServers.Count);
+                simCase.AssignedServer = availableServers[idx];
+            }
+            else if (SelectionMethod == Enums.SelectionMethod.HighestPriority)
+            {
+
+                Server highestPriorityServer = null;
+                int highestPriority = int.MaxValue;
+
+                foreach (Server server in availableServers)
+                {
+                    if (server.ID < highestPriority)
+                    {
+                        highestPriority = server.ID;
+                        highestPriorityServer = server;
+                    }
+                }
+
+                simCase.AssignedServer = highestPriorityServer;
+            }
+            else if (SelectionMethod == Enums.SelectionMethod.LeastUtilization)
+            {
+                Server leastUtilizationServer = null;
+                decimal leastUtilization = decimal.MaxValue;
+
+                foreach (Server server in availableServers)
+                {
+                    if (server.Utilization < leastUtilization)
+                    {
+                        leastUtilization = server.Utilization;
+                        leastUtilizationServer = server;
+                    }
+                }
+
+                simCase.AssignedServer = leastUtilizationServer;
+
+            }
+
+            if (simCase.AssignedServer.FinishTime > simCase.ArrivalTime)
+            {
+                simCase.TimeInQueue = simCase.AssignedServer.FinishTime - simCase.ArrivalTime;
+            }
+        }
+
+        public void handle_service_time(SimulationCase simCase)
+        {
+            Random rnd = new Random();
+            simCase.RandomService = rnd.Next(1, 101);
+            foreach (TimeDistribution time in simCase.AssignedServer.TimeDistribution)
+            {
+                if (simCase.RandomService >= time.MinRange && simCase.RandomService <= time.MaxRange)
+                {
+                    simCase.ServiceTime = time.Time;
+                    break;
+                }
+            }
+
+            simCase.StartTime = Math.Max(simCase.AssignedServer.FinishTime, simCase.ArrivalTime);
+            simCase.EndTime = simCase.StartTime + simCase.ServiceTime;
         }
 
         ///////////// INPUTS ///////////// 

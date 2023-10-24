@@ -34,8 +34,7 @@ namespace MultiQueueModels
                 { "SelectionMethod", value => this.SelectionMethod = int.Parse(value) }
             };
 
-            if (File.Exists(file))
-            {
+            try { 
                 string[] lines = File.ReadAllLines(file);
                 int serverID = 1;
                 for (int i=0; i<lines.Length; i++)
@@ -96,6 +95,10 @@ namespace MultiQueueModels
                         
                     }
                 }
+            }
+            catch (Exception error)
+            {
+                throw new Exception(error.Message);
             }
         }
 
