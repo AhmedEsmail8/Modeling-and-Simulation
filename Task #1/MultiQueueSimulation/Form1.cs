@@ -94,9 +94,21 @@ namespace MultiQueueSimulation
 
         private void show_graphs_Click(object sender, EventArgs e)
         {
-            graphs graphsForm = new graphs();
-            Hide();
-            graphsForm.Show();
+            if (FileName.Text != "No files added yet")
+            {
+                Program.graph.comboBoxBuilder();
+                Hide();
+                Program.graph.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please add file");
+            }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Windows.Forms.Application.ExitThread();
         }
     }
 }

@@ -15,6 +15,8 @@ namespace MultiQueueSimulation
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        public static Form1 form1 { get; set; }
+        public static graphs graph { get; set; }
         public static HandleFiles file { get; set; }
         public static SimulationSystem system { get; set; }
         public static void init(string path, bool flag = true)
@@ -53,19 +55,21 @@ namespace MultiQueueSimulation
             PrintSimulationTable(system.SimulationTable);
 
             string result = TestingManager.Test(system, tmp);
-            //MessageBox.Show(result);
+            MessageBox.Show(result);
 
         }
         [STAThread]
         static void Main()
         {
+            Application.SetCompatibleTextRenderingDefault(false);
+            form1 = new Form1();
+            graph = new graphs();
             
-            init(Constants.FileNames.TestCase1);
+            //init(Constants.FileNames.TestCase1);
            
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new graphs());
-
+            
+            Application.Run(form1);
 
         }
         static void PrintSimulationTable(List<SimulationCase> simulationTable)

@@ -33,10 +33,10 @@ namespace MultiQueueSimulation
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.backButton = new System.Windows.Forms.Button();
-            this.servers = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.servers = new System.Windows.Forms.ComboBox();
+            this.backButton = new System.Windows.Forms.Button();
+            this.server_graph = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -45,7 +45,7 @@ namespace MultiQueueSimulation
             this.utilization = new System.Windows.Forms.Label();
             this.idile_state_probability = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.server_graph)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -60,25 +60,6 @@ namespace MultiQueueSimulation
             this.panel1.Size = new System.Drawing.Size(346, 653);
             this.panel1.TabIndex = 2;
             // 
-            // backButton
-            // 
-            this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.backButton.Location = new System.Drawing.Point(12, 12);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(77, 57);
-            this.backButton.TabIndex = 3;
-            this.backButton.Text = "Back";
-            this.backButton.UseVisualStyleBackColor = true;
-            // 
-            // servers
-            // 
-            this.servers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.servers.FormattingEnabled = true;
-            this.servers.Location = new System.Drawing.Point(95, 134);
-            this.servers.Name = "servers";
-            this.servers.Size = new System.Drawing.Size(204, 24);
-            this.servers.TabIndex = 3;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -91,24 +72,46 @@ namespace MultiQueueSimulation
             this.label1.TabIndex = 3;
             this.label1.Text = "server :";
             // 
-            // chart1
+            // servers
             // 
-            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.servers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.servers.FormattingEnabled = true;
+            this.servers.Location = new System.Drawing.Point(95, 134);
+            this.servers.Name = "servers";
+            this.servers.Size = new System.Drawing.Size(204, 24);
+            this.servers.TabIndex = 3;
+            this.servers.SelectedIndexChanged += new System.EventHandler(this.servers_SelectedIndexChanged);
+            // 
+            // backButton
+            // 
+            this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backButton.Location = new System.Drawing.Point(12, 12);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(77, 57);
+            this.backButton.TabIndex = 3;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
+            // server_graph
+            // 
+            this.server_graph.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            this.server_graph.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(569, 86);
-            this.chart1.Name = "chart1";
+            this.server_graph.Legends.Add(legend1);
+            this.server_graph.Location = new System.Drawing.Point(569, 86);
+            this.server_graph.Name = "server_graph";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(576, 246);
-            this.chart1.TabIndex = 3;
-            this.chart1.Text = "chart1";
+            this.server_graph.Series.Add(series1);
+            this.server_graph.Size = new System.Drawing.Size(576, 246);
+            this.server_graph.TabIndex = 3;
+            this.server_graph.Text = "chart1";
+            this.server_graph.VisibleChanged += new System.EventHandler(this.server_graph_VisibleChanged);
             // 
             // label2
             // 
@@ -161,9 +164,8 @@ namespace MultiQueueSimulation
             this.avg_service_time.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avg_service_time.Location = new System.Drawing.Point(553, 456);
             this.avg_service_time.Name = "avg_service_time";
-            this.avg_service_time.Size = new System.Drawing.Size(42, 23);
+            this.avg_service_time.Size = new System.Drawing.Size(0, 23);
             this.avg_service_time.TabIndex = 10;
-            this.avg_service_time.Text = "69.4";
             // 
             // utilization
             // 
@@ -172,9 +174,8 @@ namespace MultiQueueSimulation
             this.utilization.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.utilization.Location = new System.Drawing.Point(463, 504);
             this.utilization.Name = "utilization";
-            this.utilization.Size = new System.Drawing.Size(40, 23);
+            this.utilization.Size = new System.Drawing.Size(0, 23);
             this.utilization.TabIndex = 11;
-            this.utilization.Text = "19.4";
             // 
             // idile_state_probability
             // 
@@ -183,9 +184,8 @@ namespace MultiQueueSimulation
             this.idile_state_probability.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.idile_state_probability.Location = new System.Drawing.Point(565, 546);
             this.idile_state_probability.Name = "idile_state_probability";
-            this.idile_state_probability.Size = new System.Drawing.Size(42, 23);
+            this.idile_state_probability.Size = new System.Drawing.Size(0, 23);
             this.idile_state_probability.TabIndex = 12;
-            this.idile_state_probability.Text = "39.4";
             // 
             // graphs
             // 
@@ -199,15 +199,16 @@ namespace MultiQueueSimulation
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.server_graph);
             this.Controls.Add(this.panel1);
             this.Name = "graphs";
             this.Text = "graphs";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.graphs_FormClosed);
             this.Load += new System.EventHandler(this.graphs_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.server_graph)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,7 +220,7 @@ namespace MultiQueueSimulation
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox servers;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart server_graph;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;

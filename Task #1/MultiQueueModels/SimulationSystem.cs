@@ -17,6 +17,8 @@ namespace MultiQueueModels
 
     public class SimulationSystem
     {
+        Random rnd = new Random();
+
         public SimulationSystem()
         {
             this.Servers = new List<Server>();
@@ -64,15 +66,14 @@ namespace MultiQueueModels
             }
             for (int i=0; i<NumberOfServers; i++)
             {
-                Console.WriteLine(Servers[i].ToString());
                 Servers[i].FinishTime = 0;
                 Servers[i].Calculate_server_performance(this.SimulationTable.Last().EndTime);
+                Console.WriteLine(Servers[i].ToString());
             }
         }
 
         public void handle_interArrival(SimulationCase simCase)
         {
-            Random rnd = new Random();
             if (simCase.CustomerNumber == 1)
             {
                 simCase.RandomInterArrival = 1;
@@ -97,7 +98,7 @@ namespace MultiQueueModels
         public void assignServer(SimulationCase simCase)
         {
             List<Server> availableServers = new List<Server>();
-            Random rnd = new Random();
+            
 
             foreach (Server ser in Servers)
             {
@@ -164,7 +165,6 @@ namespace MultiQueueModels
 
         public void handle_service_time(SimulationCase simCase)
         {
-            Random rnd = new Random();
             simCase.RandomService = rnd.Next(1, 101);
             foreach (TimeDistribution time in simCase.AssignedServer.TimeDistribution)
             {
