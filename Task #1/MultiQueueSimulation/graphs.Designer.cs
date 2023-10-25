@@ -29,9 +29,8 @@ namespace MultiQueueSimulation
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.servers = new System.Windows.Forms.ComboBox();
@@ -59,6 +58,7 @@ namespace MultiQueueSimulation
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(346, 653);
             this.panel1.TabIndex = 2;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label1
             // 
@@ -98,20 +98,17 @@ namespace MultiQueueSimulation
             this.server_graph.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.server_graph.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.server_graph.Legends.Add(legend1);
-            this.server_graph.Location = new System.Drawing.Point(569, 86);
+            chartArea6.Name = "ChartArea1";
+            this.server_graph.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.server_graph.Legends.Add(legend6);
+            this.server_graph.Location = new System.Drawing.Point(400, 38);
             this.server_graph.Name = "server_graph";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.server_graph.Series.Add(series1);
-            this.server_graph.Size = new System.Drawing.Size(576, 246);
+            this.server_graph.Size = new System.Drawing.Size(865, 294);
             this.server_graph.TabIndex = 3;
             this.server_graph.Text = "chart1";
             this.server_graph.VisibleChanged += new System.EventHandler(this.server_graph_VisibleChanged);
+            this.server_graph.Click += new System.EventHandler(this.server_graph_Click);
             // 
             // label2
             // 
