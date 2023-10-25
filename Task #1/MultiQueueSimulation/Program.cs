@@ -52,7 +52,7 @@ namespace MultiQueueSimulation
 
             system.PerformanceMeasures = obj1;
 
-            PrintSimulationTable(system.SimulationTable);
+            //PrintSimulationTable(system.SimulationTable);
 
             string result = TestingManager.Test(system, tmp);
             MessageBox.Show(result);

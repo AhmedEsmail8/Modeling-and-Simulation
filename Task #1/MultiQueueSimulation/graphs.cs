@@ -71,11 +71,12 @@ namespace MultiQueueSimulation
 
             server_graph.ChartAreas[0].AxisX.Interval = 1;
             server_graph.ChartAreas[0].AxisX.Minimum = 0;
-            server_graph.ChartAreas[0].AxisX.Maximum = Program.system.SimulationTable.Last().EndTime+5;
+            server_graph.ChartAreas[0].AxisX.Maximum = Program.system.SimulationTable.Last().EndTime + 2;
 
             server_graph.ChartAreas[0].AxisY.Interval = 1;
             server_graph.ChartAreas[0].AxisY.Minimum = 0;
-            server_graph.ChartAreas[0].AxisY.Maximum = 1.9;
+            server_graph.ChartAreas[0].AxisY.Maximum = 1.3;
+            //server_graph.ChartAreas[0].AxisY.LabelStyle.Enabled = false;
 
             server_graph.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
             server_graph.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
@@ -83,14 +84,19 @@ namespace MultiQueueSimulation
             server_graph.ChartAreas[0].AxisY.MinorGrid.Enabled = false;
             server_graph.Legends.Clear();
             //////////////////////////
-            server_graph.ChartAreas[0].CursorX.AutoScroll = true;
-            server_graph.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
-            server_graph.ChartAreas[0].AxisX.ScaleView.SizeType = DateTimeIntervalType.Number;
             int position = 0;
             int size = 20;
-            server_graph.ChartAreas[0].AxisX.ScaleView.Zoom(position, size);
-            server_graph.ChartAreas[0].AxisX.ScrollBar.ButtonStyle = ScrollBarButtonStyles.SmallScroll;
-            server_graph.ChartAreas[0].AxisX.ScaleView.SmallScrollSize = 30;
+
+            if (Program.system.SimulationTable.Last().EndTime + 2 > size)
+            {
+
+                server_graph.ChartAreas[0].CursorX.AutoScroll = true;
+                server_graph.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+                server_graph.ChartAreas[0].AxisX.ScaleView.SizeType = DateTimeIntervalType.Number;
+                server_graph.ChartAreas[0].AxisX.ScaleView.Zoom(position, size);
+                server_graph.ChartAreas[0].AxisX.ScrollBar.ButtonStyle = ScrollBarButtonStyles.SmallScroll;
+                server_graph.ChartAreas[0].AxisX.ScaleView.SmallScrollSize = size;
+            }
 
             for (int i = 0; i < Program.system.SimulationTable.Count; i++)
             {
@@ -102,7 +108,7 @@ namespace MultiQueueSimulation
                     series.Points.AddXY(Program.system.SimulationTable[i].StartTime, 1);
                     series.Points.AddXY(Program.system.SimulationTable[i].EndTime, 1);
 
-                    series.Color = Color.DarkCyan;
+                    series.Color = Color.DarkGray;
                     server_graph.Series.Add(series);
                 }
                

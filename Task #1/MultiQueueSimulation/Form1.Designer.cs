@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.show_graphs = new System.Windows.Forms.Button();
@@ -60,9 +60,9 @@
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(46, 33);
+            this.button1.Location = new System.Drawing.Point(40, 33);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(138, 57);
+            this.button1.Size = new System.Drawing.Size(121, 57);
             this.button1.TabIndex = 0;
             this.button1.Text = "Add File";
             this.button1.UseVisualStyleBackColor = true;
@@ -77,15 +77,15 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(346, 653);
+            this.panel1.Size = new System.Drawing.Size(303, 653);
             this.panel1.TabIndex = 1;
             // 
             // show_graphs
             // 
             this.show_graphs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.show_graphs.Location = new System.Drawing.Point(36, 186);
+            this.show_graphs.Location = new System.Drawing.Point(32, 186);
             this.show_graphs.Name = "show_graphs";
-            this.show_graphs.Size = new System.Drawing.Size(215, 57);
+            this.show_graphs.Size = new System.Drawing.Size(188, 57);
             this.show_graphs.TabIndex = 3;
             this.show_graphs.Text = "show graphs";
             this.show_graphs.UseVisualStyleBackColor = true;
@@ -97,7 +97,7 @@
             this.FileName.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.FileName.Font = new System.Drawing.Font("Microsoft YaHei", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FileName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.FileName.Location = new System.Drawing.Point(42, 122);
+            this.FileName.Location = new System.Drawing.Point(37, 122);
             this.FileName.Name = "FileName";
             this.FileName.Size = new System.Drawing.Size(161, 23);
             this.FileName.TabIndex = 2;
@@ -110,7 +110,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(352, 9);
+            this.label1.Location = new System.Drawing.Point(308, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(173, 28);
             this.label1.TabIndex = 2;
@@ -121,14 +121,14 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 50;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.customer_number,
@@ -141,12 +141,12 @@
             this.timeServiceBegins,
             this.timeServiceEnds,
             this.totalDelay});
-            this.dataGridView1.Location = new System.Drawing.Point(357, 56);
+            this.dataGridView1.Location = new System.Drawing.Point(312, 56);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1030, 323);
+            this.dataGridView1.Size = new System.Drawing.Size(901, 323);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -235,7 +235,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(352, 416);
+            this.label2.Location = new System.Drawing.Point(308, 416);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(277, 28);
             this.label2.TabIndex = 4;
@@ -246,7 +246,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(353, 466);
+            this.label3.Location = new System.Drawing.Point(309, 466);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(305, 23);
             this.label3.TabIndex = 5;
@@ -257,7 +257,7 @@
             this.avg_wating_time.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.avg_wating_time.AutoSize = true;
             this.avg_wating_time.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.avg_wating_time.Location = new System.Drawing.Point(664, 466);
+            this.avg_wating_time.Location = new System.Drawing.Point(581, 466);
             this.avg_wating_time.Name = "avg_wating_time";
             this.avg_wating_time.Size = new System.Drawing.Size(0, 23);
             this.avg_wating_time.TabIndex = 6;
@@ -267,7 +267,7 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(353, 512);
+            this.label5.Location = new System.Drawing.Point(309, 512);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(215, 23);
             this.label5.TabIndex = 7;
@@ -278,7 +278,7 @@
             this.max_queue_length.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.max_queue_length.AutoSize = true;
             this.max_queue_length.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.max_queue_length.Location = new System.Drawing.Point(574, 512);
+            this.max_queue_length.Location = new System.Drawing.Point(502, 512);
             this.max_queue_length.Name = "max_queue_length";
             this.max_queue_length.Size = new System.Drawing.Size(0, 23);
             this.max_queue_length.TabIndex = 8;
@@ -288,7 +288,7 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(353, 557);
+            this.label7.Location = new System.Drawing.Point(309, 557);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(377, 23);
             this.label7.TabIndex = 9;
@@ -299,17 +299,17 @@
             this.customer_probability.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.customer_probability.AutoSize = true;
             this.customer_probability.Font = new System.Drawing.Font("Yu Gothic UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customer_probability.Location = new System.Drawing.Point(736, 557);
+            this.customer_probability.Location = new System.Drawing.Point(644, 557);
             this.customer_probability.Name = "customer_probability";
             this.customer_probability.Size = new System.Drawing.Size(0, 23);
             this.customer_probability.TabIndex = 10;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1399, 653);
+            this.ClientSize = new System.Drawing.Size(1224, 653);
             this.Controls.Add(this.customer_probability);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.max_queue_length);

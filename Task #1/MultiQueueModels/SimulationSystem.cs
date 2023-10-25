@@ -54,7 +54,7 @@ namespace MultiQueueModels
                         Servers[i].FinishTime = simCase.EndTime;
                         Servers[i].TotalWorkingTime += simCase.ServiceTime;
                         Servers[i].no_customers++;
-                        Servers[i].Utilization = Servers[i].TotalWorkingTime / simCase.EndTime;
+                        Servers[i].Utilization = (decimal)(Servers[i].TotalWorkingTime / simCase.EndTime);
                         break;
                     }
                 }
@@ -68,7 +68,7 @@ namespace MultiQueueModels
             {
                 Servers[i].FinishTime = 0;
                 Servers[i].Calculate_server_performance(this.SimulationTable.Last().EndTime);
-                Console.WriteLine(Servers[i].ToString());
+                //Console.WriteLine(Servers[i].ToString());
             }
         }
 
@@ -146,13 +146,14 @@ namespace MultiQueueModels
 
                 foreach (Server server in availableServers)
                 {
+                    //Console.WriteLine("server #" + server.ID + "    utilization = " + server.Utilization);
                     if (server.Utilization < leastUtilization)
                     {
                         leastUtilization = server.Utilization;
                         leastUtilizationServer = server;
                     }
                 }
-
+                //Console.WriteLine("====================");
                 simCase.AssignedServer = leastUtilizationServer;
 
             }
