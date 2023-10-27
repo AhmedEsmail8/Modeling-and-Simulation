@@ -33,7 +33,7 @@
 
 ##### Max Queue Length
 
-## Screen Shotes For Run
+## ScreenShotes For Run
 
 ![Screenshot (201)](https://github.com/AhmedEsmail8/Modeling-and-Simulation/assets/89998528/10309021-5526-4024-85df-8a789241af53)
 ![Screenshot (202)](https://github.com/AhmedEsmail8/Modeling-and-Simulation/assets/89998528/e0b739a9-f643-4b6d-8f61-1ce0fbf47cd9)
