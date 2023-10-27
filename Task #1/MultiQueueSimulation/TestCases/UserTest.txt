@@ -2,13 +2,13 @@
 2
 
 StoppingNumber
-100
+5
 
 StoppingCriteria
 1
 
 SelectionMethod
-1
+3
 
 InterarrivalDistribution
 1, 0.25
@@ -16,13 +16,13 @@ InterarrivalDistribution
 3, 0.20
 4, 0.15
 
-ServiceDistribution_Server2
+ServiceDistribution_Server1
 2, 0.30
 3, 0.28
 4, 0.25
 5, 0.17
 
-ServiceDistribution_Server1
+ServiceDistribution_Server2
 3, 0.35
 4, 0.25
 5, 0.20

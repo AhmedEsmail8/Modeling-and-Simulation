@@ -72,7 +72,7 @@ namespace MultiQueueModels
                 }
 
                 total_time = simCase.StartTime;
-                if (StoppingCriteria == Enums.StoppingCriteria.SimulationEndTime && total_time > StoppingNumber)
+                if (StoppingCriteria == Enums.StoppingCriteria.SimulationEndTime && Calculate_TotalSimulationTime() > StoppingNumber)
                     break;
                 SimulationTable.Add(simCase);
             }

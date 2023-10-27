@@ -36,7 +36,7 @@ namespace MultiQueueModels
 
             try { 
                 string[] lines = File.ReadAllLines(file);
-                int serverID = 1;
+                //int serverID = 1;
                 for (int i=0; i<lines.Length; i++)
                 {
                     if (configMap.TryGetValue(lines[i], out Action<string> setProperty))
