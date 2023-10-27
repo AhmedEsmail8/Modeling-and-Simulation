@@ -89,7 +89,6 @@ namespace MultiQueueSimulation
 
             if (Program.system.SimulationTable.Last().EndTime + 2 > size)
             {
-
                 server_graph.ChartAreas[0].CursorX.AutoScroll = true;
                 server_graph.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
                 server_graph.ChartAreas[0].AxisX.ScaleView.SizeType = DateTimeIntervalType.Number;

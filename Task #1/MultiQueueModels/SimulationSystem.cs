@@ -27,7 +27,7 @@ namespace MultiQueueModels
             this.PerformanceMeasures = new PerformanceMeasures();
             this.SimulationTable = new List<SimulationCase>();
         }
-        public int Calculate_TotalSimulationTime()//d
+        public int Calculate_TotalSimulationTime()
         {
             int totalTime = -1;
             for (int i = 0; i < SimulationTable.Count; i++)
@@ -66,7 +66,7 @@ namespace MultiQueueModels
                         Servers[i].FinishTime = simCase.EndTime;
                         Servers[i].TotalWorkingTime += simCase.ServiceTime;
                         Servers[i].no_customers++;
-                        Servers[i].Utilization = (decimal)(Servers[i].TotalWorkingTime / simCase.EndTime);
+                        Servers[i].Utilization = (decimal)(Servers[i].TotalWorkingTime / Calculate_TotalSimulationTime());
                         break;
                     }
                 }
@@ -79,8 +79,8 @@ namespace MultiQueueModels
             for (int i = 0; i < NumberOfServers; i++)
             {
                 Servers[i].FinishTime = 0;
-                Servers[i].Calculate_server_performance(this.SimulationTable.Last().EndTime);
-                //Console.WriteLine(Servers[i].ToString());
+                Servers[i].Calculate_server_performance(Calculate_TotalSimulationTime());
+                Console.WriteLine(Servers[i].ToString());
             }
         }
 
@@ -159,9 +159,9 @@ namespace MultiQueueModels
                 foreach (Server server in availableServers)
                 {
                     //Console.WriteLine("server #" + server.ID + "    utilization = " + server.Utilization);
-                    if (server.Utilization < leastUtilization)
+                    if (server.TotalWorkingTime < leastUtilization)
                     {
-                        leastUtilization = server.Utilization;
+                        leastUtilization = server.TotalWorkingTime;
                         leastUtilizationServer = server;
                     }
                 }
