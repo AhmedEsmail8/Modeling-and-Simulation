@@ -15,9 +15,9 @@
 
 #### 2- Simulation EndTime
 
-### System Calculate different performance probabilities :
+### The System Calculate different performance probabilities 
 
-#### 1- For Each Server
+#### 1- For Each Server :
 
 ##### Average Service Time
 
@@ -25,7 +25,7 @@
 
 ##### Utilization
 
-#### 2- For System
+#### 2- For System :
 
 ##### Waiting Probability
 
