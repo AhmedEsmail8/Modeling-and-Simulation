@@ -3,9 +3,9 @@
 
 ### The System has many servers and system use the server based on different Selection Methods :
 
-#### 1- Random (choose Server Randomly)
+#### 1- Highest Priority (Choose the Highest Priority Server when different servers are avaliable)
 
-#### 2- Highest Priority (Choose the Highest Priority Server when different servers are avaliable)
+#### 2- Random (choose Server Randomly)
 
 #### 3- Least Utilization
 
