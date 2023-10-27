@@ -32,8 +32,9 @@ namespace MultiQueueModels
         {
             this.AverageServiceTime = no_customers > 0 ? (decimal)this.TotalWorkingTime / no_customers : 0;
             this.Utilization = (decimal)this.TotalWorkingTime / totalSimulationTime;
-            this.IdleProbability = 1 - this.Utilization;
-            if (this.IdleProbability < 0) 
+/*            this.IdleProbability = (decimal)(totalSimulationTime - this.TotalWorkingTime) / totalSimulationTime;
+*/            this.IdleProbability = 1 - this.Utilization;
+            if (this.IdleProbability < 0)
                 this.IdleProbability *= -1;
         }
 

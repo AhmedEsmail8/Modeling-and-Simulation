@@ -27,12 +27,24 @@ namespace MultiQueueModels
             this.PerformanceMeasures = new PerformanceMeasures();
             this.SimulationTable = new List<SimulationCase>();
         }
+        public int Calculate_TotalSimulationTime()//d
+        {
+            int totalTime = -1;
+            for (int i = 0; i < SimulationTable.Count; i++)
+            {
+                if (totalTime < SimulationTable[i].EndTime)
+                {
+                    totalTime = SimulationTable[i].EndTime;
+                }
 
+            }
+            return totalTime;
+        }
         public void start()
         {
             int customers = 1, total_time = 0;
-            while ((StoppingCriteria == Enums.StoppingCriteria.NumberOfCustomers && customers<=StoppingNumber) ||
-                (StoppingCriteria == Enums.StoppingCriteria.SimulationEndTime && total_time <= StoppingNumber))
+            while ((StoppingCriteria == Enums.StoppingCriteria.NumberOfCustomers && customers <= StoppingNumber) ||
+                (StoppingCriteria == Enums.StoppingCriteria.SimulationEndTime && Calculate_TotalSimulationTime() <= StoppingNumber))
             {
                 List<int> index = new List<int>();
                 SimulationCase simCase = new SimulationCase();
@@ -45,9 +57,9 @@ namespace MultiQueueModels
                 handle_interArrival(simCase);
                 assignServer(simCase);
                 handle_service_time(simCase);
-                
 
-                for (int i=0; i<Servers.Count; i++)
+
+                for (int i = 0; i < Servers.Count; i++)
                 {
                     if (Servers[i].ID == simCase.AssignedServer.ID)
                     {
@@ -58,13 +70,13 @@ namespace MultiQueueModels
                         break;
                     }
                 }
-                
+
                 total_time = simCase.StartTime;
                 if (StoppingCriteria == Enums.StoppingCriteria.SimulationEndTime && total_time > StoppingNumber)
                     break;
                 SimulationTable.Add(simCase);
             }
-            for (int i=0; i<NumberOfServers; i++)
+            for (int i = 0; i < NumberOfServers; i++)
             {
                 Servers[i].FinishTime = 0;
                 Servers[i].Calculate_server_performance(this.SimulationTable.Last().EndTime);
@@ -98,7 +110,7 @@ namespace MultiQueueModels
         public void assignServer(SimulationCase simCase)
         {
             List<Server> availableServers = new List<Server>();
-            
+
 
             foreach (Server ser in Servers)
             {

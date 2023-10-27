@@ -182,3 +182,4 @@ G:\Modeling-and-Simulation\Task #1\MultiQueueSimulation\obj\Debug\MultiQueueSimu
 D:\Modelling\Task #1\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.graphs.resources
 G:\Modeling-and-Simulation\Task #1\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.graphs.resources
 D:\Projects\Modeling-and-Simulation\Task #1\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.graphs.resources
+D:\task1\Modeling-and-Simulation\Task #1\MultiQueueSimulation\obj\Debug\MultiQueueSimulation.graphs.resources
