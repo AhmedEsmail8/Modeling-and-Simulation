@@ -68,11 +68,13 @@ namespace MultiQueueModels
 
                     else if (lines[i].IndexOf("ServiceDistribution") != -1)
                     {
+                        lines[i] = lines[i].Replace("ServiceDistribution_Server", "");
                         Server ser = new Server();
                         ser.FinishTime = 0;
                         ser.TotalWorkingTime = 0;
-                        ser.ID = serverID;
-                        serverID++;
+                        ser.ID = int.Parse(lines[i]);
+                        //ser.ID = serverID;
+                        //serverID++;
                         decimal sum = 0;
                         while (i+1<lines.Length && lines[++i].Length != 0)
                         {

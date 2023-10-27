@@ -107,7 +107,7 @@ namespace MultiQueueSimulation
                     series.Points.AddXY(Program.system.SimulationTable[i].StartTime, 1);
                     series.Points.AddXY(Program.system.SimulationTable[i].EndTime, 1);
 
-                    series.Color = Color.DarkGray;
+                    series.Color = Color.FromArgb(153, 180, 209);
                     server_graph.Series.Add(series);
                 }
                

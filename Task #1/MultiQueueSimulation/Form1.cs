@@ -31,7 +31,7 @@ namespace MultiQueueSimulation
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     fileLocation = dialog.FileName.Replace('\\', '/');
-                    MessageBox.Show("File uploaded");
+                    //MessageBox.Show("File uploaded");
                     Program.init(fileLocation, false);
                 }
 
