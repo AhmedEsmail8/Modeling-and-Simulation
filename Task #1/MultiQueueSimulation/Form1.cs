@@ -25,6 +25,7 @@ namespace MultiQueueSimulation
             string fileLocation = "";
             try
             {
+                
                 OpenFileDialog dialog = new OpenFileDialog();
                 dialog.Filter = "txt files(*.txt)|*.txt";
 
@@ -34,12 +35,13 @@ namespace MultiQueueSimulation
                     //MessageBox.Show("File uploaded");
                     Program.init(fileLocation, false);
                 }
-
+                Console.WriteLine("YES4");
                 FileName.Text = Path.GetFileName(fileLocation);
-
+                Console.WriteLine("YES33");
                 getPerformanceSystem();
-
+                Console.WriteLine("YES");
                 getSimulationTable();
+                Console.WriteLine("YES22");
             }
             catch (Exception error)
             {

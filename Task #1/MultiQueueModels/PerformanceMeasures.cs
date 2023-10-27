@@ -22,8 +22,10 @@ namespace MultiQueueModels
             {
                 totalWaitingTime += item.TimeInQueue;
             }
-
-            return (decimal)totalWaitingTime / numberOfCustomers;
+            if (numberOfCustomers > 0)
+                return (decimal)totalWaitingTime / numberOfCustomers;
+            else
+                return 0;
         }
 
 
@@ -64,7 +66,10 @@ namespace MultiQueueModels
         public decimal CalculateProbabilityOfWaiting(List<SimulationCase> simulationTable)
         {
             int customersWithQueueTime = simulationTable.Count(item => item.TimeInQueue > 0);
-            return (decimal)customersWithQueueTime / simulationTable.Count;
+            if (simulationTable.Count > 0)
+                return (decimal)customersWithQueueTime / simulationTable.Count;
+            else
+                return 0;
         }
 
 

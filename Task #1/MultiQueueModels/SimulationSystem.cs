@@ -42,11 +42,10 @@ namespace MultiQueueModels
         }
         public void start()
         {
-            int customers = 1, total_time = 0;
+            int customers = 1;
             while ((StoppingCriteria == Enums.StoppingCriteria.NumberOfCustomers && customers <= StoppingNumber) ||
                 (StoppingCriteria == Enums.StoppingCriteria.SimulationEndTime && Calculate_TotalSimulationTime() <= StoppingNumber))
             {
-                List<int> index = new List<int>();
                 SimulationCase simCase = new SimulationCase();
 
                 simCase.CustomerNumber = customers;
@@ -66,14 +65,9 @@ namespace MultiQueueModels
                         Servers[i].FinishTime = simCase.EndTime;
                         Servers[i].TotalWorkingTime += simCase.ServiceTime;
                         Servers[i].no_customers++;
-                        Servers[i].Utilization = (decimal)(Servers[i].TotalWorkingTime / Calculate_TotalSimulationTime());
                         break;
                     }
                 }
-
-                total_time = simCase.StartTime;
-                if (StoppingCriteria == Enums.StoppingCriteria.SimulationEndTime && Calculate_TotalSimulationTime() > StoppingNumber)
-                    break;
                 SimulationTable.Add(simCase);
             }
             for (int i = 0; i < NumberOfServers; i++)
