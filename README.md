@@ -1,4 +1,7 @@
-# Modeling-and-Simulation
+# Multi-Queue Simulation
+Multi-Queue Simulation is a specialized form of computer-based modeling and simulation that is designed to analyze and replicate scenarios involving multiple queues and their associated service processes. This type of simulation is often used to study and optimize processes that involve queues, such as customer service centers, manufacturing lines, and transportation systems. 
+
+
 # Features
 
 ### The System has many servers and system use the server based on different Selection Methods :
