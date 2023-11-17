@@ -42,3 +42,9 @@ D:\Modelling\Task #2\NewspaperSellerModels\obj\Debug\NewspaperSellerModels.cspro
 D:\Modelling\Task #2\NewspaperSellerModels\obj\Debug\NewspaperSellerModels.csproj.CoreCompileInputs.cache
 D:\Modelling\Task #2\NewspaperSellerModels\obj\Debug\NewspaperSellerModels.dll
 D:\Modelling\Task #2\NewspaperSellerModels\obj\Debug\NewspaperSellerModels.pdb
+D:\New folder (9)\Task #2\NewspaperSellerModels\bin\Debug\NewspaperSellerModels.dll
+D:\New folder (9)\Task #2\NewspaperSellerModels\bin\Debug\NewspaperSellerModels.pdb
+D:\New folder (9)\Task #2\NewspaperSellerModels\obj\Debug\NewspaperSellerModels.csproj.AssemblyReference.cache
+D:\New folder (9)\Task #2\NewspaperSellerModels\obj\Debug\NewspaperSellerModels.csproj.CoreCompileInputs.cache
+D:\New folder (9)\Task #2\NewspaperSellerModels\obj\Debug\NewspaperSellerModels.dll
+D:\New folder (9)\Task #2\NewspaperSellerModels\obj\Debug\NewspaperSellerModels.pdb

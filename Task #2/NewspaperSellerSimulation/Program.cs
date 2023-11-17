@@ -26,16 +26,22 @@ namespace NewspaperSellerSimulation
             data.FillSystem(ref system);
 
             system.start();
-            PrintSimulationTable(system.SimulationTable);
+            PerformanceMeasures performance = new PerformanceMeasures();
 
+            performance.CalcPerformace(system.SimulationTable);
+
+            system.PerformanceMeasures = performance;
+            PrintSimulationTable(system.SimulationTable);
+            performance_measures(performance);
             string result = TestingManager.Test(system, Constants.FileNames.TestCase1);
-            
-            
+
+
             MessageBox.Show(result);
 
             Form1 form = new Form1();
             Application.Run(form);
         }
+
 
         static void PrintSimulationTable(List<SimulationCase> simulationTable)
         {
@@ -52,5 +58,32 @@ namespace NewspaperSellerSimulation
                 Console.WriteLine(formattedRow);
             }
         }
+        static void performance_measures(PerformanceMeasures performance)
+        {
+            Console.WriteLine("Performance Measures:");
+
+            string Performance_Row = $"Total sales profit: {performance.TotalSalesProfit} $";
+            Console.WriteLine(Performance_Row);
+
+            Performance_Row = $"Total Cost: {performance.TotalCost} $";
+            Console.WriteLine(Performance_Row);
+
+            Performance_Row = $"Total Lost Profit: {performance.TotalLostProfit} $";
+            Console.WriteLine(Performance_Row);
+
+            Performance_Row = $"Total Scrap Profit: {performance.TotalScrapProfit} $";
+            Console.WriteLine(Performance_Row);
+
+            Performance_Row = $"Total Net Profit: {performance.TotalNetProfit} $";
+            Console.WriteLine(Performance_Row);
+
+            Performance_Row = $"Days With More Demand: {performance.DaysWithMoreDemand}";
+            Console.WriteLine(Performance_Row);
+
+            Performance_Row = $"Days With Unsold Papers: {performance.DaysWithUnsoldPapers}";
+            Console.WriteLine(Performance_Row);
+
+        }
     }
 }
+

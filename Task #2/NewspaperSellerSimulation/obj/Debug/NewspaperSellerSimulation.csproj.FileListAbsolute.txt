@@ -136,3 +136,16 @@ D:\Modelling\Task #2\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulati
 D:\Modelling\Task #2\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.csproj.CopyComplete
 D:\Modelling\Task #2\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.exe
 D:\Modelling\Task #2\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.pdb
+D:\New folder (9)\Task #2\NewspaperSellerSimulation\bin\Debug\NewspaperSellerSimulation.exe.config
+D:\New folder (9)\Task #2\NewspaperSellerSimulation\bin\Debug\NewspaperSellerSimulation.exe
+D:\New folder (9)\Task #2\NewspaperSellerSimulation\bin\Debug\NewspaperSellerSimulation.pdb
+D:\New folder (9)\Task #2\NewspaperSellerSimulation\bin\Debug\NewspaperSellerModels.dll
+D:\New folder (9)\Task #2\NewspaperSellerSimulation\bin\Debug\NewspaperSellerModels.pdb
+D:\New folder (9)\Task #2\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.csproj.AssemblyReference.cache
+D:\New folder (9)\Task #2\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.csproj.SuggestedBindingRedirects.cache
+D:\New folder (9)\Task #2\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.Properties.Resources.resources
+D:\New folder (9)\Task #2\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.csproj.GenerateResource.cache
+D:\New folder (9)\Task #2\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.csproj.CoreCompileInputs.cache
+D:\New folder (9)\Task #2\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.csproj.CopyComplete
+D:\New folder (9)\Task #2\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.exe
+D:\New folder (9)\Task #2\NewspaperSellerSimulation\obj\Debug\NewspaperSellerSimulation.pdb
